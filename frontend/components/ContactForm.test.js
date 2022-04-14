@@ -76,6 +76,7 @@ test('renders all firstName, lastName and email text when submitted. Does NOT re
     userEvent.type(screen.getByLabelText(/Last Name/),"Magro");
     userEvent.type(screen.getByLabelText(/Email/),"me@me.com");
     userEvent.click(screen.getByRole('button', {value: /SUBMIT/}));
+    await waitFor(() => screen.findByText(/First Name:/));
     expect(await screen.findByText(/First Name:/)).toBeInTheDocument();
     expect(await screen.findByText(/RyanM/)).toBeInTheDocument();
     expect(await screen.findByText(/Last Name:/)).toBeVisible();
